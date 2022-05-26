@@ -1,13 +1,31 @@
 package com.urenha.ddsheet;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
-public class Character {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+@Entity
+public class Character implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String name;
 	private String owner;
 	private String description;
+	
+	@ManyToOne
+	@JoinColumn(name="categoria_id")
 	private CharacterCategory category;
 	/*private List<Attribute> attributes;
 	private List<Integer> reflexes;
@@ -23,7 +41,8 @@ public class Character {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
+	
+	
 	public Character(java.lang.Integer id, String name, String owner, CharacterCategory category) {
 		super();
 		this.id = id;

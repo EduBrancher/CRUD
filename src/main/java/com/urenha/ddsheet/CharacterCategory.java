@@ -1,13 +1,91 @@
 package com.urenha.ddsheet;
 
+import java.io.Serializable;
 import java.util.List;
+import java.util.Objects;
 
-public class CharacterCategory {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+@Entity
+public class CharacterCategory implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String nomeCategoria;
 	private String descricaoCategoria;
 	
+	@OneToMany(mappedBy = "categoria")
 	private List<Character> characters;
+
+	public CharacterCategory() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public CharacterCategory(Integer id, String nomeCategoria, String descricaoCategoria, List<Character> characters) {
+		super();
+		this.id = id;
+		this.nomeCategoria = nomeCategoria;
+		this.descricaoCategoria = descricaoCategoria;
+		this.characters = characters;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getNomeCategoria() {
+		return nomeCategoria;
+	}
+
+	public void setNomeCategoria(String nomeCategoria) {
+		this.nomeCategoria = nomeCategoria;
+	}
+
+	public String getDescricaoCategoria() {
+		return descricaoCategoria;
+	}
+
+	public void setDescricaoCategoria(String descricaoCategoria) {
+		this.descricaoCategoria = descricaoCategoria;
+	}
+
+	public List<Character> getCharacters() {
+		return characters;
+	}
+
+	public void setCharacters(List<Character> characters) {
+		this.characters = characters;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		CharacterCategory other = (CharacterCategory) obj;
+		return Objects.equals(id, other.id);
+	}
 
 	
 }
