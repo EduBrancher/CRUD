@@ -1,0 +1,94 @@
+package com.urenha.ddsheet;
+
+import java.util.List;
+import java.util.Objects;
+
+public class Character {
+	private Integer id;
+	private String name;
+	private String owner;
+	private String description;
+	private CharacterCategory category;
+	/*private List<Attribute> attributes;
+	private List<Integer> reflexes;
+	private List<Integer> fortitude;
+	private Integer will;
+	private List<CharacterClass> levels;
+	private List<Skill> skills;
+	private List<Feat> feats;
+	private List<Item> inventory;
+	private List<Item> equipment;*/
+	
+	public Character() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Character(java.lang.Integer id, String name, String owner, CharacterCategory category) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.owner = owner;
+		this.category = category;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getOwner() {
+		return owner;
+	}
+
+	public void setOwner(String owner) {
+		this.owner = owner;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public CharacterCategory getCategory() {
+		return category;
+	}
+
+	public void setCategory(CharacterCategory category) {
+		this.category = category;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Character other = (Character) obj;
+		return Objects.equals(id, other.id);
+	}
+	
+	
+	
+}
