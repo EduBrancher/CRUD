@@ -8,14 +8,14 @@ public class CharacterCategoryDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
     private Integer id;
-    private String name;
-    private String description;
+    private String categoryName;
+    private String categoryDescription;
 
     public CharacterCategoryDTO(CharacterCategory category) {
         super();
         this.id = category.getId();
-        this.name = category.getcategoryName();
-        this.description = category.getcategoryDescription();
+        this.categoryName = category.getcategoryName();
+        this.categoryDescription = category.getcategoryDescription();
     }
 
     public CharacterCategoryDTO() {
@@ -30,19 +30,19 @@ public class CharacterCategoryDTO implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getCategoryName() {
+        return categoryName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 
-    public String getDescription() {
-        return description;
+    public String getCategoryDescription() {
+        return categoryDescription;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setCategoryDescription(String categoryDescription) {
+        this.categoryDescription = categoryDescription;
     }
 }
