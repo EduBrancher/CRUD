@@ -1,5 +1,7 @@
 package com.urenha.ddsheet;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -22,7 +24,8 @@ public class DDCharacter implements Serializable{
 	private String name;
 	private String owner;
 	private String description;
-	
+
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="category_id")
 	private CharacterCategory category;
