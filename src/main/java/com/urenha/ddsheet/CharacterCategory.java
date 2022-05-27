@@ -1,6 +1,8 @@
 package com.urenha.ddsheet;
 
+import java.io.Serial;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -15,27 +17,27 @@ public class CharacterCategory implements Serializable {
 	/**
 	 * 
 	 */
+	@Serial
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private String nomeCategoria;
-	private String descricaoCategoria;
+	private String categoryName;
+	private String categoryDescription;
 	
-	@OneToMany(mappedBy = "categoria")
-	private List<Character> characters;
+	@OneToMany(mappedBy = "category")
+	private List<DDCharacter> characters = new ArrayList<>();
 
 	public CharacterCategory() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public CharacterCategory(Integer id, String nomeCategoria, String descricaoCategoria, List<Character> characters) {
+	public CharacterCategory(Integer id, String categoryName, String categoryDescription) {
 		super();
 		this.id = id;
-		this.nomeCategoria = nomeCategoria;
-		this.descricaoCategoria = descricaoCategoria;
-		this.characters = characters;
+		this.categoryName = categoryName;
+		this.categoryDescription = categoryDescription;
 	}
 
 	public Integer getId() {
@@ -46,27 +48,27 @@ public class CharacterCategory implements Serializable {
 		this.id = id;
 	}
 
-	public String getNomeCategoria() {
-		return nomeCategoria;
+	public String getcategoryName() {
+		return categoryName;
 	}
 
-	public void setNomeCategoria(String nomeCategoria) {
-		this.nomeCategoria = nomeCategoria;
+	public void setcategoryName(String categoryName) {
+		this.categoryName = categoryName;
 	}
 
-	public String getDescricaoCategoria() {
-		return descricaoCategoria;
+	public String getcategoryDescription() {
+		return categoryDescription;
 	}
 
-	public void setDescricaoCategoria(String descricaoCategoria) {
-		this.descricaoCategoria = descricaoCategoria;
+	public void setcategoryDescription(String categoryDescription) {
+		this.categoryDescription = categoryDescription;
 	}
 
-	public List<Character> getCharacters() {
+	public List<DDCharacter> getCharacters() {
 		return characters;
 	}
 
-	public void setCharacters(List<Character> characters) {
+	public void setCharacters(List<DDCharacter> characters) {
 		this.characters = characters;
 	}
 

@@ -1,7 +1,6 @@
 package com.urenha.ddsheet;
 
 import java.io.Serializable;
-import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
@@ -12,7 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Character implements Serializable{
+public class DDCharacter implements Serializable{
 	/**
 	 * 
 	 */
@@ -25,7 +24,7 @@ public class Character implements Serializable{
 	private String description;
 	
 	@ManyToOne
-	@JoinColumn(name="categoria_id")
+	@JoinColumn(name="category_id")
 	private CharacterCategory category;
 	/*private List<Attribute> attributes;
 	private List<Integer> reflexes;
@@ -37,13 +36,13 @@ public class Character implements Serializable{
 	private List<Item> inventory;
 	private List<Item> equipment;*/
 	
-	public Character() {
+	public DDCharacter() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	
 	
-	public Character(java.lang.Integer id, String name, String owner, CharacterCategory category) {
+	public DDCharacter(java.lang.Integer id, String name, String owner, CharacterCategory category) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -104,7 +103,7 @@ public class Character implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Character other = (Character) obj;
+		DDCharacter other = (DDCharacter) obj;
 		return Objects.equals(id, other.id);
 	}
 	
