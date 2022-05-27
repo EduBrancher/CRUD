@@ -38,4 +38,9 @@ public class CharacterCategoryService {
         category.setcategoryDescription(updateData.getCategoryDescription());
         return categoryRepo.save(category);
     }
+
+    public void delete(Integer id) {
+        CharacterCategory category = findById(id);
+        categoryRepo.deleteById(id);
+    }
 }

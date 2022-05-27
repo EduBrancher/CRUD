@@ -5,6 +5,7 @@ import com.urenha.ddsheet.DTO.CharacterCategoryDTO;
 import com.urenha.ddsheet.services.CharacterCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -48,5 +49,11 @@ public class CharacterCategoryResource {
     public ResponseEntity<CharacterCategoryDTO> update(@PathVariable Integer id, @RequestBody CharacterCategoryDTO updateData){
         CharacterCategory updatedCategory = categoryService.update(id, updateData);
         return ResponseEntity.ok().body(new CharacterCategoryDTO(updatedCategory));
+    }
+
+    @DeleteMapping(value="/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Integer id){
+        categoryService.delete(id);
+        return ResponseEntity.noContent().build();
     }
 }
