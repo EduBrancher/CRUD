@@ -47,6 +47,7 @@ public class DDCharacter implements Serializable{
 	
 	public DDCharacter(java.lang.Integer id, String name, String owner, CharacterCategory category) {
 		super();
+		//pode tirar o id do construtor pq o banco administra
 		this.id = id;
 		this.name = name;
 		this.owner = owner;
@@ -109,7 +110,5 @@ public class DDCharacter implements Serializable{
 		DDCharacter other = (DDCharacter) obj;
 		return Objects.equals(id, other.id);
 	}
-	
-	
 	
 }

@@ -6,6 +6,7 @@ import com.urenha.ddsheet.exceptions.ObjectNotFoundException;
 import com.urenha.ddsheet.repositories.CharacterCategoryRepository;
 import jdk.jfr.Category;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,6 +23,7 @@ public class CharacterCategoryService {
         return obj.orElseThrow(() -> new ObjectNotFoundException(
                 "Objeto não encontrado: " + id + "Tipo: " + CharacterCategory.class.getName()));
     }
+
     public List<CharacterCategory> findAll(){
         return categoryRepo.findAll();
     }
@@ -29,7 +31,6 @@ public class CharacterCategoryService {
     public CharacterCategory create(CharacterCategory obj){
         obj.setId(null); //a base de dados que deve administrar isso.
         return categoryRepo.save(obj);
-
     }
 
     public CharacterCategory update(Integer id, CharacterCategoryDTO updateData) {
@@ -40,7 +41,16 @@ public class CharacterCategoryService {
     }
 
     public void delete(Integer id) {
+        //pode ver se esta aqui e jogar a exceção ao inves de chamar find
+        //pra evitar de criar um objeto.
         CharacterCategory category = findById(id);
-        categoryRepo.deleteById(id);
+        try {
+            categoryRepo.deleteById(id);
+        }
+        catch (DataIntegrityViolationException e){
+            throw new com.urenha.ddsheet.exceptions.DataIntegrityViolationException("Category could not be deleted," +
+                    "possesses associated characters");
+        }
+
     }
 }
