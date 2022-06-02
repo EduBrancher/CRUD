@@ -28,4 +28,16 @@ public class CharacterService {
         List<DDCharacter> characterList = characterRepo.findAllByCategory(id);
         return characterList;
     }
+
+    public DDCharacter update(Integer id, DDCharacter updatedCharacter) {
+        DDCharacter savedCharacter = findById(id);
+        updateData(savedCharacter, updatedCharacter);
+        return characterRepo.save(savedCharacter);
+    }
+
+    private void updateData(DDCharacter character, DDCharacter updatedCharacter) {
+        character.setName(updatedCharacter.getName());
+        character.setOwner(updatedCharacter.getOwner());
+        character.setDescription(updatedCharacter.getDescription());
+    }
 }
