@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.urenha.ddsheet.DDCharacter;
 
 @Repository
-public interface CharacterRepository extends JpaRepository<DDCharacter, Long>{
+public interface CharacterRepository extends JpaRepository<DDCharacter, Integer>{
 
 }
