@@ -1,5 +1,6 @@
 package com.urenha.ddsheet.services;
 
+import com.urenha.ddsheet.CharacterCategory;
 import com.urenha.ddsheet.DDCharacter;
 import com.urenha.ddsheet.exceptions.ObjectNotFoundException;
 import com.urenha.ddsheet.repositories.CharacterRepository;
@@ -17,6 +18,13 @@ public class CharacterService {
 
     @Autowired
     private CharacterCategoryService categoryService;
+
+    public DDCharacter create(Integer id_cat, DDCharacter receivedCharacter) {
+        receivedCharacter.setId(null);
+        CharacterCategory cat = categoryService.findById(id_cat);
+        receivedCharacter.setCategory(cat);
+        return characterRepo.save(receivedCharacter);
+    }
 
     public DDCharacter findById(Integer id){
         Optional<DDCharacter> character = characterRepo.findById(id);
@@ -40,4 +48,6 @@ public class CharacterService {
         character.setOwner(updatedCharacter.getOwner());
         character.setDescription(updatedCharacter.getDescription());
     }
+
+
 }
