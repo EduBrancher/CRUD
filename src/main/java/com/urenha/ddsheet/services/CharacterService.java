@@ -49,5 +49,8 @@ public class CharacterService {
         character.setDescription(updatedCharacter.getDescription());
     }
 
-
+    public void delete(Integer id) {
+        DDCharacter toBeDeleted = findById(id);
+        characterRepo.delete(toBeDeleted);
+    }
 }
