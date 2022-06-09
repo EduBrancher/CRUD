@@ -1,4 +1,4 @@
-package com.urenha.ddsheet;
+package com.urenha.ddsheet.model;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -88,6 +88,5 @@ public class CharacterCategory implements Serializable {
 		CharacterCategory other = (CharacterCategory) obj;
 		return Objects.equals(id, other.id);
 	}
-
 	
 }

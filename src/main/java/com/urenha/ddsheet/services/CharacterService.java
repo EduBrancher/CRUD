@@ -1,7 +1,7 @@
 package com.urenha.ddsheet.services;
 
-import com.urenha.ddsheet.CharacterCategory;
-import com.urenha.ddsheet.DDCharacter;
+import com.urenha.ddsheet.model.CharacterCategory;
+import com.urenha.ddsheet.model.DDCharacter;
 import com.urenha.ddsheet.exceptions.ObjectNotFoundException;
 import com.urenha.ddsheet.repositories.CharacterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +33,7 @@ public class CharacterService {
 
     public List<DDCharacter> findAll(Integer id){
         categoryService.findById(id);
-        List<DDCharacter> characterList = characterRepo.findAllByCategory(id);
+        List<DDCharacter> characterList = characterRepo.findAllByCategoryIdOrderByName(id);
         return characterList;
     }
 

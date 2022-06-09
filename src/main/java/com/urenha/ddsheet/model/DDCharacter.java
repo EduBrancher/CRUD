@@ -1,4 +1,4 @@
-package com.urenha.ddsheet;
+package com.urenha.ddsheet.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -45,10 +45,9 @@ public class DDCharacter implements Serializable{
 	}
 	
 	
-	public DDCharacter(java.lang.Integer id, String name, String owner, CharacterCategory category) {
+	public DDCharacter(String name, String owner, CharacterCategory category) {
 		super();
 		//pode tirar o id do construtor pq o banco administra
-		this.id = id;
 		this.name = name;
 		this.owner = owner;
 		this.category = category;

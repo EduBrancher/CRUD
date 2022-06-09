@@ -2,12 +2,11 @@ package com.urenha.ddsheet.services;
 
 import java.util.Arrays;
 
-import com.urenha.ddsheet.DTO.CharacterCategoryDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.urenha.ddsheet.DDCharacter;
-import com.urenha.ddsheet.CharacterCategory;
+import com.urenha.ddsheet.model.DDCharacter;
+import com.urenha.ddsheet.model.CharacterCategory;
 import com.urenha.ddsheet.repositories.CharacterCategoryRepository;
 import com.urenha.ddsheet.repositories.CharacterRepository;
 
@@ -23,8 +22,8 @@ public class DBService {
 	public void instantiateDB() {
 		CharacterCategory DMcategory = new CharacterCategory(null, "DMCharacter", "Managed by the DM");
 		CharacterCategory PCcategory = new CharacterCategory(null, "PlayerCharacter", "Owned by a player");
-		DDCharacter myCharacter = new DDCharacter(null, "FirstCharacter", "DM", DMcategory);
-		DDCharacter myCharacter2 = new DDCharacter(null, "SecondCharacter", "PC1", PCcategory);
+		DDCharacter myCharacter = new DDCharacter("FirstCharacter", "DM", DMcategory);
+		DDCharacter myCharacter2 = new DDCharacter("SecondCharacter", "PC1", PCcategory);
 		DMcategory.getCharacters().addAll(Arrays.asList(myCharacter));
 		PCcategory.getCharacters().addAll(Arrays.asList(myCharacter2));
 		

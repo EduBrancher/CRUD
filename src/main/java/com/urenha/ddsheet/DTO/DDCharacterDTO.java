@@ -1,6 +1,6 @@
 package com.urenha.ddsheet.DTO;
 
-import com.urenha.ddsheet.DDCharacter;
+import com.urenha.ddsheet.model.DDCharacter;
 
 import java.io.Serializable;
 
@@ -9,12 +9,15 @@ public class DDCharacterDTO implements Serializable {
     private Integer id;
     private String name;
     private String owner;
+    private Integer categoryId;
+
 
     public DDCharacterDTO(DDCharacter character) {
         super();
         this.id = character.getId();
         this.name = character.getName();
         this.owner = character.getOwner();
+        this.categoryId = character.getCategory().getId();
     }
 
     public DDCharacterDTO() {
@@ -43,5 +46,9 @@ public class DDCharacterDTO implements Serializable {
 
     public void setOwner(String owner) {
         this.owner = owner;
+    }
+
+    public Integer getCategoryId() {
+        return categoryId;
     }
 }

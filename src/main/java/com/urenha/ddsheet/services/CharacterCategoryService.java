@@ -1,10 +1,9 @@
 package com.urenha.ddsheet.services;
 
-import com.urenha.ddsheet.CharacterCategory;
+import com.urenha.ddsheet.model.CharacterCategory;
 import com.urenha.ddsheet.DTO.CharacterCategoryDTO;
 import com.urenha.ddsheet.exceptions.ObjectNotFoundException;
 import com.urenha.ddsheet.repositories.CharacterCategoryRepository;
-import jdk.jfr.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;

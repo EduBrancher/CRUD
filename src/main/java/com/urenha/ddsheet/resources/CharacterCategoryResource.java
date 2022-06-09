@@ -1,6 +1,6 @@
 package com.urenha.ddsheet.resources;
 
-import com.urenha.ddsheet.CharacterCategory;
+import com.urenha.ddsheet.model.CharacterCategory;
 import com.urenha.ddsheet.DTO.CharacterCategoryDTO;
 import com.urenha.ddsheet.services.CharacterCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;

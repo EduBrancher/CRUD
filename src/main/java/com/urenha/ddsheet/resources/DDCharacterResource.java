@@ -1,9 +1,8 @@
 package com.urenha.ddsheet.resources;
 
-import com.urenha.ddsheet.CharacterCategory;
-import com.urenha.ddsheet.DDCharacter;
+import com.urenha.ddsheet.model.CharacterCategory;
+import com.urenha.ddsheet.model.DDCharacter;
 import com.urenha.ddsheet.DTO.DDCharacterDTO;
-import com.urenha.ddsheet.repositories.CharacterRepository;
 import com.urenha.ddsheet.services.CharacterCategoryService;
 import com.urenha.ddsheet.services.CharacterService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,11 +51,13 @@ public class DDCharacterResource {
     }
 
     @PostMapping
-    public ResponseEntity<DDCharacter> create(@RequestParam(value = "category", defaultValue = "0") Integer id_cat,
-                                              @RequestBody DDCharacter receivedCharacter){
-        DDCharacter newCharacter = characterService.create(id_cat, receivedCharacter);
+    public ResponseEntity<DDCharacter> create(@RequestBody DDCharacterDTO receivedCharacter){
+        Integer cat_id = receivedCharacter.getCategoryId();
+        CharacterCategory cat = categoryService.findById(cat_id);
+        DDCharacter received = new DDCharacter(receivedCharacter.getName(), receivedCharacter.getOwner(), cat);
+        DDCharacter newCharacter = characterService.create(cat.getId(), received);
         URI uri = ServletUriComponentsBuilder.fromCurrentContextPath().path("/Characters/{id}")
-                .buildAndExpand(newCharacter.getId()).toUri();
+                                             .buildAndExpand(newCharacter.getId()).toUri();
         return ResponseEntity.created(uri).build();
     }
 

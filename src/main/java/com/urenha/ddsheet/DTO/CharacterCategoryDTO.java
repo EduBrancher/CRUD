@@ -1,6 +1,6 @@
 package com.urenha.ddsheet.DTO;
 
-import com.urenha.ddsheet.CharacterCategory;
+import com.urenha.ddsheet.model.CharacterCategory;
 
 import java.io.Serializable;
 
