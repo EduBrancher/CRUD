@@ -1,1 +1,1 @@
-web: java -jar target/ddcharactersheet-1.0.jar
+web: java -jar target/DDCharacterSheet-1.0.jar
