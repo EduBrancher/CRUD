@@ -1,5 +1,7 @@
 package com.urenha.ddsheet.model;
 
+import org.hibernate.validator.constraints.Length;
+
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -11,6 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 public class CharacterCategory implements Serializable {
@@ -22,6 +25,8 @@ public class CharacterCategory implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	@NotEmpty(message = "categoryName field is required")
+	@Length(min = 1, max = 100, message = "Max name length is 100 characters, min name length is 1 character")
 	private String categoryName;
 	private String categoryDescription;
 	

@@ -7,6 +7,7 @@ import com.urenha.ddsheet.services.CharacterCategoryService;
 import com.urenha.ddsheet.services.CharacterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,9 +19,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping(value = "/Characters")
 public class DDCharacterResource {
@@ -45,13 +48,13 @@ public class DDCharacterResource {
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<DDCharacter> update(@PathVariable Integer id, @RequestBody DDCharacter updatedCharacter){
+    public ResponseEntity<DDCharacter> update(@Valid @PathVariable Integer id, @RequestBody DDCharacter updatedCharacter){
         DDCharacter newCharacter = characterService.update(id, updatedCharacter);
         return ResponseEntity.ok().body(newCharacter);
     }
 
     @PostMapping
-    public ResponseEntity<DDCharacter> create(@RequestBody DDCharacterDTO receivedCharacter){
+    public ResponseEntity<DDCharacter> create(@Valid @RequestBody DDCharacterDTO receivedCharacter){
         Integer cat_id = receivedCharacter.getCategoryId();
         CharacterCategory cat = categoryService.findById(cat_id);
         DDCharacter received = new DDCharacter(receivedCharacter.getName(), receivedCharacter.getOwner(), cat);
